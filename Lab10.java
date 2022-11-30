@@ -88,20 +88,21 @@ public class Lab10 {
                 // the order longest to shortest, and within a group of words of 
                 // the same length, the words are sorted by decreasing occurrence 
                 // count.
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
+                if (word1.length() > word2.length()) {
+                    return -1;
+                }
+                if (word2.length() > word2.length()) {
+                    return 1;
+                }
+                else {
+                    if (count1 > count2) {
+                        return -1;
+                    }
+                    if (count1 < count2) {
+                        return 1;
+                    }
+                    return count1.compareTo(count2);
+                }
 
                 //-----------------------------------------------------------------
                 
@@ -112,13 +113,15 @@ public class Lab10 {
         // Declare a TreeSet reference that accepts Map.Entry objects comprised of 
         // a String key and Integer value, and point it at a new TreeSet that 
         // compares its elements using an anonymous instance of MyComparator.
-        
+        MyComparator comparator = new MyComparator();
+        TreeSet<Map.Entry<String, Integer>> ts =  new TreeSet(comparator);
+        Set<Map.Entry<String, Integer>> entrySet = words.entrySet();
         //-------------------------------------------------------------------------
         
         //-------------------------------------------------------------------------
         // Add all of the entries of the words map to the tree set you 
         // just created. 
-        
+        ts.addAll(entrySet);
 
         //-------------------------------------------------------------------------
     
@@ -126,7 +129,11 @@ public class Lab10 {
         // Iterate over the tree set you previously created and for each entry
         // contained therein, print out on its own line the key, followed by a 
         // space, and then the value. 
-
+        Iterator<Map.Entry<String, Integer>> itr = ts.iterator();
+        while (itr.hasNext()) {
+            Map.Entry<String, Integer> entry = itr.next();
+            System.out.println(entry.getKey() + " " + entry.getValue() );
+        }
 
 
         //-------------------------------------------------------------------------
@@ -157,7 +164,10 @@ public class Lab10 {
                 // Hint: Use Character.isAlphabetic to determine if a given char 
                 //       is an alphabetic character and not a comma, or something
                 //       else.
-                
+                char lastLetter = word.charAt( word.length() - 1 );
+                if (!Character.isAlphabetic(lastLetter)) {
+                    word = word.substring(0, word.length() - 1);
+                }
                 
 
 
@@ -167,8 +177,11 @@ public class Lab10 {
 
                 //-----------------------------------------------------------------
                 // Update the occurrence count for word. 
-                
-
+                int count = 1;
+                if (words.containsKey(word)) {
+                    count += words.get(word);
+                }
+                words.put(word, count);
 
 
 
