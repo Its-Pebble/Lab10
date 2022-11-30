@@ -28,7 +28,7 @@ public class Lab10 {
         //-------------------------------------------------------------------------
         // Point words at a Map that will support the most efficient solution
         // to the problem that we're solving in this lab.
-        
+        words = new HashMap<>();
         //-------------------------------------------------------------------------
             
         int num = getWords(fileURL, local, words);
@@ -44,7 +44,9 @@ public class Lab10 {
                 start = System.currentTimeMillis();
                 //-----------------------------------------------------------------
                 // Store in count the occurrence count of word. 
-                
+                if (words.containsKey(word)) {
+                    count = words.get(word);
+                }
 
 
                 //-----------------------------------------------------------------
@@ -58,7 +60,7 @@ public class Lab10 {
             
             //---------------------------------------------------------------------
             // Call printWords, passing in words as the only argument.
-            
+            printWords(words);
 
             //---------------------------------------------------------------------
             
