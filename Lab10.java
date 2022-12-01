@@ -103,7 +103,6 @@ public class Lab10 {
                     }
                     
                 }
-                //FIXME: might need to change to count1.compareTo(count2)
                 return word1.compareTo(word2);
                 //-----------------------------------------------------------------
                 
