@@ -91,7 +91,7 @@ public class Lab10 {
                 if (word1.length() > word2.length()) {
                     return -1;
                 }
-                if (word2.length() > word2.length()) {
+                if (word1.length() < word2.length()) {
                     return 1;
                 }
                 else {
@@ -101,9 +101,10 @@ public class Lab10 {
                     if (count1 < count2) {
                         return 1;
                     }
-                    return count1.compareTo(count2);
+                    
                 }
-
+                //FIXME: might need to change to count1.compareTo(count2)
+                return word1.compareTo(word2);
                 //-----------------------------------------------------------------
                 
             }
